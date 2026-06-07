@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { cardVariants } from '@/lib/motion';
 import { Badge } from '@/components/ui/Badge';
+import { PlanetIcon } from '@/components/ui/PlanetIcon';
 import { useNumeralSystem } from '@/hooks/useNumeralSystem';
 import type { CalcLetter } from '@/types';
 
@@ -23,19 +24,33 @@ export function LetterCard({ item, index }: LetterCardProps) {
       animate="visible"
       exit="exit"
       custom={index}
-      className="relative flex flex-col items-center gap-2 rounded-lg p-4 min-w-[6.5rem] border border-[var(--border-default)]"
+      className="relative flex flex-col items-center gap-2 rounded-lg p-4 min-w-[6.5rem] border border-[var(--border-default)] overflow-hidden"
       style={{
         backgroundColor: `var(--tint-${letter.element})`,
         borderLeftWidth: '3px',
         borderLeftColor: `var(--ink-${letter.element})`,
       }}
     >
-      {/* Element badge */}
-      <Badge element={letter.element} className="absolute top-2 right-2" />
+      {/* Subtle celestial dot pattern in card background */}
+      <svg
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 w-full h-full"
+        preserveAspectRatio="xMidYMid slice"
+        viewBox="0 0 80 120"
+      >
+        {[
+          [10, 20], [40, 10], [65, 35], [25, 70], [58, 80], [72, 18], [18, 95],
+        ].map(([cx, cy], i) => (
+          <circle key={i} cx={cx} cy={cy} r="0.8" fill="currentColor" opacity="0.08" />
+        ))}
+      </svg>
 
-      {/* Arabic glyph — heavy, clear */}
+      {/* Element badge */}
+      <Badge element={letter.element} className="absolute top-2 right-2 z-10" />
+
+      {/* Arabic glyph — heavy and prominent */}
       <span
-        className="font-arabic-display font-bold leading-none mt-3"
+        className="font-arabic-display font-bold leading-none mt-4 z-10"
         style={{
           fontSize: 'var(--text-glyph)',
           color: `var(--ink-${letter.element})`,
@@ -46,22 +61,30 @@ export function LetterCard({ item, index }: LetterCardProps) {
       </span>
 
       {/* Latin name */}
-      <span className="text-xs font-body text-[var(--text-muted)] tracking-wide">
+      <span className="text-xs font-body text-[var(--text-muted)] tracking-wide z-10">
         {letter.latin}
       </span>
 
-      {/* Value — prominent */}
-      <span
-        className="font-mono font-semibold text-xl text-[var(--text-primary)]"
-      >
+      {/* Value */}
+      <span className="font-mono font-semibold text-xl text-[var(--text-primary)] z-10">
         {format(letter.value)}
       </span>
 
-      {/* Planet */}
+      {/* Planet icon — replacing text */}
       {letter.planet && (
-        <span className="text-[10px] font-body text-[var(--text-muted)] text-center leading-tight">
-          {letter.planet}
-        </span>
+        <div
+          className="flex flex-col items-center gap-0.5 z-10"
+          title={letter.planet}
+        >
+          <PlanetIcon
+            planet={letter.planet}
+            size={18}
+            className="text-[var(--text-muted)]"
+          />
+          <span className="text-[9px] font-body text-[var(--text-muted)] opacity-70 leading-none">
+            {letter.planet}
+          </span>
+        </div>
       )}
     </motion.article>
   );
