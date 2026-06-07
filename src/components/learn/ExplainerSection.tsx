@@ -6,13 +6,13 @@ import { cn } from '@/lib/utils';
 
 interface ExplainerSectionProps {
   titleEn: string;
-  titleAr?: string;
+  titleFa?: string;
   children: React.ReactNode;
   className?: string;
   tinted?: boolean;
 }
 
-export function ExplainerSection({ titleEn, titleAr, children, className, tinted }: ExplainerSectionProps) {
+export function ExplainerSection({ titleEn, titleFa, children, className, tinted }: ExplainerSectionProps) {
   return (
     <motion.section
       variants={fadeUpVariants}
@@ -20,21 +20,24 @@ export function ExplainerSection({ titleEn, titleAr, children, className, tinted
       whileInView="visible"
       viewport={{ once: true, margin: '-60px' }}
       className={cn(
-        'rounded-xl px-6 py-8 sm:px-10 sm:py-10',
-        tinted ? 'bg-[var(--bg-subtle)]' : '',
+        'rounded-lg px-6 py-8 sm:px-10 sm:py-10',
+        tinted ? 'bg-[var(--bg-surface)] border border-[var(--border-default)]' : '',
         className
       )}
     >
-      <header className="mb-6">
-        <h2 className="font-display text-display italic text-[var(--text-primary)] leading-tight">
+      <header className="mb-7">
+        <h2
+          className="font-display text-[var(--text-primary)] leading-tight"
+          style={{ fontSize: 'var(--text-display)' }}
+        >
           {titleEn}
         </h2>
-        {titleAr && (
-          <p className="mt-1 font-arabic text-xl text-[var(--text-muted)]" dir="rtl">
-            {titleAr}
+        {titleFa && (
+          <p className="mt-1.5 font-persian text-lg text-[var(--text-muted)]" lang="fa" dir="rtl">
+            {titleFa}
           </p>
         )}
-        <div className="mt-3 h-px w-16 rounded-full bg-[var(--accent-primary)] opacity-50" />
+        <div className="mt-4 h-px w-12 rounded-full bg-[var(--text-primary)] opacity-20" />
       </header>
       {children}
     </motion.section>

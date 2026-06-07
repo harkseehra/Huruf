@@ -15,18 +15,21 @@ export function InterpretationPanel({ reduced, text }: InterpretationPanelProps)
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.4, duration: DURATION, ease: EASE_OUT }}
-      className="rounded-xl bg-[var(--bg-subtle)] border-l-4 border-[var(--accent-primary)] p-6"
+      className="rounded-lg border border-[var(--border-default)] bg-[var(--bg-surface)] p-7"
       aria-label="Interpretation"
     >
-      <div className="mb-2 flex items-center gap-2">
-        <span className="text-xs font-body uppercase tracking-widest text-[var(--text-muted)]">
-          Interpretation — تفسير
+      <div className="mb-4 flex items-center gap-3">
+        <span className="font-body text-xs font-semibold uppercase tracking-widest text-[var(--text-muted)]">
+          Interpretation
+        </span>
+        <span className="font-persian text-xs text-[var(--text-muted)]" lang="fa">
+          تفسیر
         </span>
       </div>
-      <blockquote className="font-body italic text-[var(--text-secondary)] leading-relaxed text-base sm:text-lg">
-        &ldquo;{text}&rdquo;
+      <blockquote className="font-body text-base leading-relaxed text-[var(--text-secondary)]">
+        {text}
       </blockquote>
-      <p className="mt-3 text-xs font-body text-[var(--text-muted)] italic">
+      <p className="mt-5 text-xs font-body text-[var(--text-muted)]">
         Sample text — curated interpretations arrive in Phase 2.
       </p>
     </motion.section>

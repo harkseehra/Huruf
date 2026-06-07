@@ -1,44 +1,45 @@
 import {
   Instrument_Serif,
-  Playfair_Display,
+  IBM_Plex_Sans,
+  IBM_Plex_Mono,
   Vazirmatn,
   Noto_Kufi_Arabic,
-  JetBrains_Mono,
 } from 'next/font/google';
 
 export const instrumentSerif = Instrument_Serif({
   weight: ['400'],
-  style: ['normal', 'italic'],
+  style: ['normal'],
   subsets: ['latin'],
   variable: '--font-display',
   display: 'swap',
 });
 
-export const playfairDisplay = Playfair_Display({
+export const ibmPlexSans = IBM_Plex_Sans({
   weight: ['400', '500', '600'],
-  style: ['normal', 'italic'],
+  style: ['normal'],
   subsets: ['latin'],
   variable: '--font-body',
   display: 'swap',
 });
 
+export const ibmPlexMono = IBM_Plex_Mono({
+  weight: ['400', '500', '600'],
+  style: ['normal'],
+  subsets: ['latin'],
+  variable: '--font-mono',
+  display: 'swap',
+});
+
 export const vazirmatn = Vazirmatn({
-  weight: ['300', '400', '500'],
+  weight: ['400', '500', '600', '700'],
   subsets: ['arabic'],
-  variable: '--font-arabic',
+  variable: '--font-persian',
   display: 'swap',
 });
 
 export const notoKufiArabic = Noto_Kufi_Arabic({
-  weight: ['400', '700'],
+  weight: ['500', '700'],
   subsets: ['arabic'],
   variable: '--font-arabic-display',
-  display: 'swap',
-});
-
-export const jetbrainsMono = JetBrains_Mono({
-  weight: ['400', '500'],
-  subsets: ['latin'],
-  variable: '--font-mono',
   display: 'swap',
 });

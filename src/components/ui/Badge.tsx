@@ -1,37 +1,36 @@
 import type { Element } from '@/types';
 import { cn } from '@/lib/utils';
 
-const elementLabels: Record<Element, { en: string; ar: string }> = {
-  fire:  { en: 'Fire',  ar: 'نار' },
-  air:   { en: 'Air',   ar: 'هوا' },
-  water: { en: 'Water', ar: 'ماء' },
-  earth: { en: 'Earth', ar: 'تراب' },
+const elementLabels: Record<Element, { en: string; fa: string }> = {
+  fire:  { en: 'Fire',  fa: 'آتش' },
+  air:   { en: 'Air',   fa: 'هوا' },
+  water: { en: 'Water', fa: 'آب' },
+  earth: { en: 'Earth', fa: 'خاک' },
 };
 
 interface BadgeProps {
   element: Element;
   className?: string;
-  showArabic?: boolean;
+  showPersian?: boolean;
 }
 
-export function Badge({ element, className, showArabic = false }: BadgeProps) {
+export function Badge({ element, className, showPersian = false }: BadgeProps) {
   const label = elementLabels[element];
   return (
     <span
       className={cn(
-        'inline-flex items-center gap-1 rounded-pill px-2.5 py-0.5 text-xs font-body font-medium leading-none',
-        'border transition-colors duration-150',
+        'inline-flex items-center rounded-pill px-2 py-0.5 text-[11px] font-body font-semibold leading-none tracking-wide',
         className
       )}
       style={{
         backgroundColor: `var(--tint-${element})`,
         color: `var(--ink-${element})`,
-        borderColor: `var(--ink-${element})`,
-        opacity: 0.9,
+        border: `1px solid var(--ink-${element})`,
+        opacity: 0.85,
       }}
     >
-      {showArabic ? (
-        <span className="font-arabic text-xs">{label.ar}</span>
+      {showPersian ? (
+        <span className="font-persian text-xs" lang="fa">{label.fa}</span>
       ) : (
         label.en
       )}

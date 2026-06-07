@@ -33,38 +33,46 @@ export function TotalDisplay({ total, reduced }: TotalDisplayProps) {
       initial="hidden"
       animate="visible"
       custom={1}
-      className="rounded-xl bg-[var(--bg-surface)] border border-[var(--border-default)] shadow-card overflow-hidden"
+      className="rounded-lg border border-[var(--border-default)] bg-[var(--bg-surface)] overflow-hidden"
       aria-label="Totals"
     >
       <div className="grid grid-cols-2 divide-x divide-[var(--border-default)]">
         {/* Total */}
-        <div className="flex flex-col items-center gap-1 px-6 py-8">
-          <span className="text-xs font-body uppercase tracking-widest text-[var(--text-muted)]">
-            Total مجموع
-          </span>
+        <div className="flex flex-col items-center gap-2 px-6 py-10">
+          <div className="flex items-center gap-2">
+            <span className="font-body text-xs font-semibold uppercase tracking-widest text-[var(--text-muted)]">
+              Total
+            </span>
+            <span className="font-persian text-xs text-[var(--text-muted)]" lang="fa">
+              مجموع
+            </span>
+          </div>
           <span
-            className="font-mono font-medium leading-none text-[var(--text-primary)]"
-            style={{ fontSize: 'clamp(3rem, 6vw, 4.5rem)' }}
+            className="font-mono font-semibold leading-none text-[var(--text-primary)]"
+            style={{ fontSize: 'clamp(3.5rem, 7vw, 5.5rem)' }}
           >
             <AnimatedNumber target={total} format={format} />
           </span>
         </div>
+
         {/* Reduced */}
-        <div className="flex flex-col items-center gap-1 px-6 py-8">
-          <span className="text-xs font-body uppercase tracking-widest text-[var(--text-muted)]">
-            Reduced مختصر
-          </span>
+        <div className="flex flex-col items-center gap-2 px-6 py-10">
+          <div className="flex items-center gap-2">
+            <span className="font-body text-xs font-semibold uppercase tracking-widest text-[var(--text-muted)]">
+              Reduced
+            </span>
+            <span className="font-persian text-xs text-[var(--text-muted)]" lang="fa">
+              تقلیل‌یافته
+            </span>
+          </div>
           <span
-            className="font-mono font-medium leading-none"
-            style={{
-              fontSize: 'clamp(3rem, 6vw, 4.5rem)',
-              color: 'var(--accent-primary)',
-            }}
+            className="font-mono font-semibold leading-none text-[var(--text-primary)]"
+            style={{ fontSize: 'clamp(3.5rem, 7vw, 5.5rem)' }}
           >
             <AnimatedNumber target={reduced} format={format} />
           </span>
-          <span className="mt-1 text-center text-xs font-body italic text-[var(--text-muted)] max-w-[12rem]">
-            Sum of digits until single figure
+          <span className="text-center text-xs font-body text-[var(--text-muted)] max-w-[10rem] leading-snug">
+            Sum of digits repeated
           </span>
         </div>
       </div>

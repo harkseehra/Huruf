@@ -23,18 +23,19 @@ export function LetterCard({ item, index }: LetterCardProps) {
       animate="visible"
       exit="exit"
       custom={index}
-      className="relative flex flex-col items-center gap-3 rounded-md p-4 shadow-card min-w-[7rem]"
+      className="relative flex flex-col items-center gap-2 rounded-lg p-4 min-w-[6.5rem] border border-[var(--border-default)]"
       style={{
         backgroundColor: `var(--tint-${letter.element})`,
-        borderLeft: `3px solid var(--ink-${letter.element})`,
+        borderLeftWidth: '3px',
+        borderLeftColor: `var(--ink-${letter.element})`,
       }}
     >
       {/* Element badge */}
-      <Badge element={letter.element} className="absolute top-2 right-2 text-[10px] px-1.5 py-px" />
+      <Badge element={letter.element} className="absolute top-2 right-2" />
 
-      {/* Arabic glyph */}
+      {/* Arabic glyph — heavy, clear */}
       <span
-        className="font-arabic-display leading-none mt-2"
+        className="font-arabic-display font-bold leading-none mt-3"
         style={{
           fontSize: 'var(--text-glyph)',
           color: `var(--ink-${letter.element})`,
@@ -44,17 +45,19 @@ export function LetterCard({ item, index }: LetterCardProps) {
         {letter.arabic}
       </span>
 
-      {/* Latin transliteration */}
-      <span className="text-xs font-body italic text-[var(--text-muted)]">
+      {/* Latin name */}
+      <span className="text-xs font-body text-[var(--text-muted)] tracking-wide">
         {letter.latin}
       </span>
 
-      {/* Value */}
-      <span className="font-mono text-lg font-medium text-[var(--text-primary)]">
+      {/* Value — prominent */}
+      <span
+        className="font-mono font-semibold text-xl text-[var(--text-primary)]"
+      >
         {format(letter.value)}
       </span>
 
-      {/* Planet (if present) */}
+      {/* Planet */}
       {letter.planet && (
         <span className="text-[10px] font-body text-[var(--text-muted)] text-center leading-tight">
           {letter.planet}

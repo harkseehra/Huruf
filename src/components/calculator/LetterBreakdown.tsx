@@ -19,12 +19,14 @@ export function LetterBreakdown({ letters }: LetterBreakdownProps) {
       animate="visible"
       aria-label="Letter breakdown"
     >
-      <h2 className="mb-4 font-display text-lg italic text-[var(--text-secondary)]">
-        Letter breakdown
-        <span className="mr-2 font-arabic text-base not-italic text-[var(--text-muted)]">
-          — تفكيك الحروف
+      <div className="mb-5 flex items-baseline gap-3">
+        <h2 className="font-body text-sm font-semibold uppercase tracking-widest text-[var(--text-muted)]">
+          Letter Breakdown
+        </h2>
+        <span className="font-persian text-sm text-[var(--text-muted)]" lang="fa">
+          تجزیه حروف
         </span>
-      </h2>
+      </div>
       <motion.div
         layout
         className="flex flex-wrap gap-3 justify-end"

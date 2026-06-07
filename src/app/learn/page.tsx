@@ -3,91 +3,96 @@ import { LearnTable } from '@/components/learn/LearnTable';
 import { Badge } from '@/components/ui/Badge';
 import type { Element } from '@/types';
 
-const elements: Array<{ id: Element; titleEn: string; titleAr: string; description: string }> = [
+const elements: Array<{ id: Element; titleEn: string; titleFa: string; description: string }> = [
   {
     id: 'fire',
     titleEn: 'Fire — Nāriyya',
-    titleAr: 'نارية',
+    titleFa: 'آتش — ناریه',
     description:
       'Letters of fire carry the qualities of light, warmth, rising energy, and spiritual illumination. They are associated with the will, the sun, and the principle of origin.',
   },
   {
     id: 'air',
     titleEn: 'Air — Hawāʾiyya',
-    titleAr: 'هوائية',
+    titleFa: 'هوا — هوایی',
     description:
       'Air letters hold breath, movement, the spoken word, and the transmission of spirit between forms. They govern the intellect, communication, and the mediating principle.',
   },
   {
     id: 'water',
     titleEn: 'Water — Māʾiyya',
-    titleAr: 'مائية',
+    titleFa: 'آب — مایی',
     description:
       "Water letters carry receptivity, depth, the lunar, and the soul's inner tides. They are letters of feeling, reflection, and the hidden current beneath appearances.",
   },
   {
     id: 'earth',
     titleEn: 'Earth — Turābiyya',
-    titleAr: 'ترابية',
+    titleFa: 'خاک — ترابی',
     description:
       'Earth letters are the letters of manifestation, weight, stability, and the body. They anchor the spiritual into the physical and give form to what would otherwise remain invisible.',
   },
 ];
 
 const reductionSteps = [
-  { label: '٦٦', note: 'Example: the word الله' },
-  { label: '٦ + ٦', note: 'Sum the digits' },
+  { label: '٦٦', note: 'Example: الله' },
+  { label: '٦＋٦', note: 'Sum the digits' },
   { label: '١٢', note: 'Interim' },
-  { label: '١ + ٢', note: 'Sum again' },
-  { label: '٣', note: 'Reduced value' },
+  { label: '١＋٢', note: 'Sum again' },
+  { label: '٣', note: 'Reduced' },
 ];
 
 export default function LearnPage() {
   return (
-    <div className="mx-auto max-w-5xl px-4 pb-24 pt-12 sm:px-6 lg:px-8 space-y-16">
+    <div className="mx-auto max-w-5xl px-4 pb-24 pt-14 sm:px-6 lg:px-8 space-y-14">
 
       {/* Intro */}
-      <ExplainerSection titleEn="What is ʿIlm al-Ḥurūf?" titleAr="علم الحروف" tinted>
+      <ExplainerSection titleEn="What is ʿIlm al-Ḥurūf?" titleFa="علم الحروف چیست؟" tinted>
         <div className="space-y-4 font-body text-base leading-relaxed text-[var(--text-secondary)] max-w-2xl">
           <p>
             <em>ʿIlm al-Ḥurūf</em> — the Science of Letters — is an esoteric discipline within
-            Islamic mysticism that holds each letter of the Arabic alphabet to be a cosmic principle,
+            Islamic mysticism that holds each letter of the Arabic alphabet to be a cosmic principle:
             a vibration with numerical, elemental, and planetary correspondences.
           </p>
           <p>
-            By summing the abjad values of the letters in a name or word, a practitioner can
-            arrive at a number that reveals the hidden essence — the <em>bāṭin</em> — of that name.
+            By summing the abjad values of the letters in a name or word, a practitioner arrives at
+            a number that reveals the hidden essence — the <em>bāṭin</em> — of that name.
             The Ḥurūf tradition draws on works such as al-Būnī&apos;s{' '}
             <em>Shams al-Maʿārif</em> and centuries of Sufi commentary.
           </p>
-          <p className="text-sm italic text-[var(--text-muted)]">
-            Correspondences on this page follow{' '}
+          <p className="text-sm text-[var(--text-muted)]">
+            Correspondences follow{' '}
             <strong>al-Būnī&apos;s <em>Shams al-Maʿārif al-Kubrā</em></strong> as the primary source.
             Other traditions differ; Phase 2 will specify the exact edition used.
           </p>
         </div>
       </ExplainerSection>
 
-      {/* Abjad order explainer */}
-      <ExplainerSection titleEn="The Abjad Order" titleAr="ترتيب أبجد">
-        <div className="space-y-4 font-body text-base leading-relaxed text-[var(--text-secondary)] max-w-2xl">
+      {/* Abjad order */}
+      <ExplainerSection titleEn="The Abjad Order" titleFa="ترتیب ابجد">
+        <div className="space-y-5 font-body text-base leading-relaxed text-[var(--text-secondary)] max-w-2xl">
           <p>
-            Unlike the modern alphabetical order (alef-bāʾ-tāʾ…), the <em>abjad</em> order is
-            ancient — shared with Hebrew and Syriac — and assigns numerical values in groups:
+            Unlike the modern alphabetical order, the <em>abjad</em> order is ancient — shared with
+            Hebrew and Syriac — and assigns numerical values in groups:
           </p>
-          <div className="grid grid-cols-4 gap-2 text-center font-mono text-sm">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {[
-              ['Units 1–9', 'ا ب ج د ه و ز ح ط'],
-              ['Tens 10–90', 'ي ك ل م ن س ع ف ص'],
-              ['Hundreds 100–900', 'ق ر ش ت ث خ ذ ض ظ'],
-              ['Thousands 1000', 'غ'],
-            ].map(([label, letters]) => (
+              { label: 'Units 1–9',      letters: 'ا ب ج د ه و ز ح ط' },
+              { label: 'Tens 10–90',     letters: 'ي ك ل م ن س ع ف ص' },
+              { label: 'Hundreds 100–900', letters: 'ق ر ش ت ث خ ذ ض ظ' },
+              { label: 'Thousands 1000', letters: 'غ' },
+            ].map(({ label, letters }) => (
               <div
                 key={label}
-                className="rounded-lg bg-[var(--bg-subtle)] px-3 py-3 border border-[var(--border-default)]"
+                className="rounded-lg bg-[var(--bg-subtle)] border border-[var(--border-default)] px-4 py-4"
               >
-                <p className="text-xs text-[var(--text-muted)] mb-2 font-body">{label}</p>
-                <p className="font-arabic-display text-xl text-[var(--text-primary)]" dir="rtl">
+                <p className="text-xs font-body font-semibold uppercase tracking-wider text-[var(--text-muted)] mb-3">
+                  {label}
+                </p>
+                <p
+                  className="font-arabic-display font-bold text-2xl text-[var(--text-primary)] leading-relaxed"
+                  dir="rtl"
+                >
                   {letters}
                 </p>
               </div>
@@ -101,30 +106,31 @@ export default function LearnPage() {
       </ExplainerSection>
 
       {/* Four Elements */}
-      <ExplainerSection titleEn="The Four Elements" titleAr="العناصر الأربعة">
+      <ExplainerSection titleEn="The Four Elements" titleFa="چهار عنصر">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {elements.map((el) => (
             <div
               key={el.id}
-              className="rounded-xl border p-5 transition-shadow duration-200 hover:shadow-card"
+              className="rounded-lg border p-6 transition-shadow duration-200 hover:shadow-[var(--shadow-card)]"
               style={{
                 backgroundColor: `var(--tint-${el.id})`,
-                borderColor: `var(--ink-${el.id})`,
+                borderColor: `var(--border-default)`,
                 borderLeftWidth: '3px',
+                borderLeftColor: `var(--ink-${el.id})`,
               }}
             >
               <div className="mb-3 flex items-center gap-2">
                 <Badge element={el.id} />
                 <span
-                  className="font-arabic text-sm text-[var(--text-muted)]"
+                  className="font-persian text-sm text-[var(--text-muted)]"
+                  lang="fa"
                   dir="rtl"
                 >
-                  {el.titleAr}
+                  {el.titleFa}
                 </span>
               </div>
               <h3
-                className="mb-2 font-display italic text-lg leading-tight"
-                style={{ color: `var(--ink-${el.id})` }}
+                className="mb-2 font-display text-xl leading-tight text-[var(--text-primary)]"
               >
                 {el.titleEn}
               </h3>
@@ -136,38 +142,39 @@ export default function LearnPage() {
         </div>
       </ExplainerSection>
 
-      {/* Full letter table */}
+      {/* Full table */}
       <section>
         <header className="mb-6">
-          <h2 className="font-display text-display italic text-[var(--text-primary)] leading-tight">
+          <h2
+            className="font-display text-[var(--text-primary)] leading-tight"
+            style={{ fontSize: 'var(--text-display)' }}
+          >
             The 28 + 4 Letters
           </h2>
-          <p className="mt-1 font-arabic text-xl text-[var(--text-muted)]" dir="rtl">
-            الحروف الثمانية والعشرون
+          <p className="mt-1.5 font-persian text-lg text-[var(--text-muted)]" lang="fa" dir="rtl">
+            بیست‌وهشت حرف عربی و چهار حرف فارسی
           </p>
-          <div className="mt-3 h-px w-16 rounded-full bg-[var(--accent-primary)] opacity-50" />
-          <p className="mt-4 font-body text-sm italic text-[var(--text-muted)]">
-            Sample data — sourced dataset with full planet, element, and essence correspondences arrives in Phase 2.
+          <div className="mt-4 h-px w-12 rounded-full bg-[var(--text-primary)] opacity-20" />
+          <p className="mt-4 font-body text-sm text-[var(--text-muted)]">
+            Sample data — sourced dataset with full correspondences arrives in Phase 2.
           </p>
         </header>
         <LearnTable />
       </section>
 
       {/* Reduction */}
-      <ExplainerSection titleEn="How Reduction Works" titleAr="كيف يعمل الاختصار" tinted>
+      <ExplainerSection titleEn="How Reduction Works" titleFa="تقلیل عدد چگونه کار می‌کند" tinted>
         <div className="space-y-6 max-w-2xl">
           <p className="font-body text-base leading-relaxed text-[var(--text-secondary)]">
-            When the abjad sum of a name exceeds a single digit, it is reduced by summing its digits
-            repeatedly until a single figure remains. Master numbers — 11, 22, and 33 — are not
-            reduced further in this application, as they carry their own esoteric weight.
+            When the abjad sum exceeds a single digit, it is reduced by summing its digits repeatedly
+            until a single figure remains. Master numbers — 11, 22, and 33 — are not reduced further.
           </p>
-          {/* Step diagram */}
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="flex flex-wrap items-center gap-3">
             {reductionSteps.map((step, i) => (
-              <div key={i} className="flex items-center gap-2">
+              <div key={i} className="flex items-center gap-3">
                 <div className="flex flex-col items-center">
                   <span
-                    className="font-arabic-display text-2xl text-[var(--text-primary)]"
+                    className="font-arabic-display font-bold text-3xl text-[var(--text-primary)]"
                     dir="rtl"
                   >
                     {step.label}
@@ -177,14 +184,14 @@ export default function LearnPage() {
                   </span>
                 </div>
                 {i < reductionSteps.length - 1 && (
-                  <span className="text-[var(--text-muted)] text-lg">→</span>
+                  <span className="text-[var(--text-muted)] text-xl font-mono">→</span>
                 )}
               </div>
             ))}
           </div>
-          <p className="font-body text-sm italic text-[var(--text-muted)]">
-            Normalization rules (handling of <em>tāʾ marbūṭa</em>, hamza, the definite article ال, etc.)
-            will be finalized and documented in Phase 2.
+          <p className="font-body text-sm text-[var(--text-muted)]">
+            Normalisation rules — handling of <em>tāʾ marbūṭa</em>, hamza, and the definite article
+            — will be documented in Phase 2.
           </p>
         </div>
       </ExplainerSection>

@@ -5,11 +5,11 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        display: ['var(--font-display)', 'serif'],
-        body: ['var(--font-body)', 'serif'],
-        arabic: ['var(--font-arabic)', 'sans-serif'],
+        display:          ['var(--font-display)', 'serif'],
+        body:             ['var(--font-body)', 'system-ui', 'sans-serif'],
+        persian:          ['var(--font-persian)', 'Arial', 'sans-serif'],
         'arabic-display': ['var(--font-arabic-display)', 'sans-serif'],
-        mono: ['var(--font-mono)', 'monospace'],
+        mono:             ['var(--font-mono)', 'monospace'],
       },
       colors: {
         page: 'var(--bg-page)',

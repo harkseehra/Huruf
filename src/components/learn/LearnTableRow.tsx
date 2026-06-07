@@ -21,14 +21,14 @@ export function LearnTableRow({ letter, index, isEven }: LearnTableRowProps) {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: '-20px' }}
-      custom={index % 8}
+      custom={index % 6}
       className="group transition-colors duration-100 hover:bg-[var(--bg-subtle)]"
       style={{ backgroundColor: isEven ? 'var(--bg-surface)' : 'var(--bg-page)' }}
     >
-      {/* Element indicator */}
+      {/* Element bar */}
       <td className="w-1 p-0">
         <div
-          className="w-1 h-full min-h-[3.5rem]"
+          className="w-1 min-h-[3.5rem]"
           style={{ backgroundColor: `var(--ink-${letter.element})` }}
         />
       </td>
@@ -36,20 +36,20 @@ export function LearnTableRow({ letter, index, isEven }: LearnTableRowProps) {
       {/* Glyph */}
       <td className="px-4 py-3 text-center">
         <span
-          className="font-arabic-display text-2xl leading-none"
+          className="font-arabic-display font-bold text-3xl leading-none"
           style={{ color: `var(--ink-${letter.element})` }}
         >
           {letter.arabic}
         </span>
       </td>
 
-      {/* Name Latin */}
-      <td className="px-3 py-3 font-body italic text-sm text-[var(--text-secondary)]">
+      {/* Latin name */}
+      <td className="px-3 py-3 font-body text-sm text-[var(--text-secondary)]">
         {letter.latin}
       </td>
 
       {/* Value */}
-      <td className="px-3 py-3 font-mono text-sm font-medium text-[var(--text-primary)] text-right" dir="ltr">
+      <td className="px-3 py-3 font-mono text-base font-semibold text-[var(--text-primary)] text-right" dir="ltr">
         {format(letter.value)}
       </td>
 
@@ -65,12 +65,12 @@ export function LearnTableRow({ letter, index, isEven }: LearnTableRowProps) {
 
       {/* Planet */}
       <td className="px-3 py-3 text-xs font-body text-[var(--text-muted)] hidden lg:table-cell">
-        {letter.planet ?? <span className="opacity-30">—</span>}
+        {letter.planet ?? <span className="opacity-25">—</span>}
       </td>
 
       {/* Example */}
       <td className="px-4 py-3 text-right hidden sm:table-cell">
-        <span className="font-arabic text-base text-[var(--text-muted)]" dir="rtl">
+        <span className="font-arabic-display font-bold text-xl text-[var(--text-muted)]" dir="rtl">
           {letter.example}
         </span>
       </td>

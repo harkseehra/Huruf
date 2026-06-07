@@ -4,19 +4,21 @@
 
 /* ── DESIGN TOKENS ─────────────────────────────────────────── */
 :root {
-  /* Font families */
   --font-display: 'Instrument Serif', serif;
-  --font-body: 'Playfair Display', serif;
-  --font-arabic: 'Vazirmatn', sans-serif;
+  --font-body: 'IBM Plex Sans', system-ui, sans-serif;
+  --font-persian: 'Vazirmatn', Arial, sans-serif;
   --font-arabic-display: 'Noto Kufi Arabic', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
 
-  /* Type scale */
-  --text-hero: clamp(3.5rem, 8vw, 6.5rem);
-  --text-display: clamp(2rem, 4vw, 3rem);
-  --text-xl: clamp(1.5rem, 2.5vw, 2rem);
-  --text-lg: clamp(1.125rem, 1.8vw, 1.35rem);
-  --text-glyph: clamp(2.5rem, 5vw, 3.5rem);
+  /* Type scale — bigger and cleaner */
+  --text-hero: clamp(4rem, 9vw, 7.5rem);
+  --text-display: clamp(2.25rem, 4.5vw, 3.25rem);
+  --text-xl: clamp(1.375rem, 2vw, 1.75rem);
+  --text-lg: clamp(1.125rem, 1.5vw, 1.25rem);
+  --text-base: 1.0625rem;
+  --text-sm: 0.9375rem;
+  --text-xs: 0.8125rem;
+  --text-glyph: clamp(2.75rem, 5.5vw, 4rem);
 
   /* Spacing */
   --space-1: 0.25rem;
@@ -30,116 +32,116 @@
   --space-24: 6rem;
 
   /* Shape */
-  --radius-sm: 6px;
-  --radius-md: 12px;
-  --radius-lg: 20px;
-  --radius-xl: 28px;
+  --radius-sm: 5px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
   --radius-pill: 9999px;
 
   /* Motion */
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-  --duration-fast: 150ms;
+  --duration-fast: 140ms;
   --duration-base: 420ms;
   --duration-slow: 680ms;
 
-  /* Element inks — same across all themes (adjusted per theme below) */
-  --ink-fire: #c0392b;
-  --ink-air: #5a50b8;
-  --ink-water: #2471a3;
-  --ink-earth: #6e4c1e;
+  /* Element inks */
+  --ink-fire: #b83030;
+  --ink-air: #4a45a8;
+  --ink-water: #1e6fa0;
+  --ink-earth: #6b470f;
 }
 
-/* ── PAPER THEME (default) — sky meets forest ──────────────── */
+/* ── PAPER — clean white ────────────────────────────────────── */
 [data-theme='paper'] {
-  --bg-page: #eef5fb;
-  --bg-surface: #ffffff;
-  --bg-subtle: #daeaf6;
-  --bg-nav: rgba(238, 245, 251, 0.88);
+  --bg-page: #ffffff;
+  --bg-surface: #f8f8f8;
+  --bg-subtle: #f2f2f2;
+  --bg-nav: rgba(255, 255, 255, 0.92);
 
-  --text-primary: #112b1e;
-  --text-secondary: #2d6147;
-  --text-muted: #5c9e7a;
-  --text-on-accent: #f0f8f4;
+  --text-primary: #111111;
+  --text-secondary: #3a3a3a;
+  --text-muted: #888888;
+  --text-on-accent: #ffffff;
 
-  --border-default: #b8d4ee;
-  --border-strong: #1a3a2a;
+  --border-default: #e0e0e0;
+  --border-strong: #222222;
 
-  --accent-primary: #1a3a2a;
-  --accent-hover: #0e2419;
-  --accent-ring: #8cb8e8;
+  --accent-primary: #111111;
+  --accent-hover: #333333;
+  --accent-ring: #b0b0b0;
 
-  --shadow-card: 0 2px 16px 0 rgba(17, 43, 30, 0.07);
-  --shadow-glow: 0 0 28px 0 rgba(140, 184, 232, 0.38);
-  --shadow-elevated: 0 8px 32px 0 rgba(17, 43, 30, 0.12);
+  --shadow-card: 0 1px 4px 0 rgba(0,0,0,0.06), 0 4px 16px 0 rgba(0,0,0,0.04);
+  --shadow-glow: 0 0 0 3px rgba(0,0,0,0.08);
+  --shadow-elevated: 0 8px 32px 0 rgba(0,0,0,0.1);
 
-  --tint-fire: #fef1ef;
-  --tint-air: #f2f1fb;
-  --tint-water: #eef5fc;
+  --tint-fire: #fdf2f2;
+  --tint-air: #f3f3fc;
+  --tint-water: #f0f5fc;
   --tint-earth: #faf4ec;
 }
 
-/* ── NIGHT THEME — forest floor under stars ────────────────── */
+/* ── NIGHT — true black ─────────────────────────────────────── */
 [data-theme='night'] {
-  --bg-page: #091a12;
-  --bg-surface: #112b1e;
-  --bg-subtle: #1a3a2a;
-  --bg-nav: rgba(9, 26, 18, 0.88);
+  --bg-page: #000000;
+  --bg-surface: #111111;
+  --bg-subtle: #1a1a1a;
+  --bg-nav: rgba(0, 0, 0, 0.92);
 
-  --text-primary: #daeaf8;
-  --text-secondary: #b8d4f0;
-  --text-muted: #7ca8cc;
-  --text-on-accent: #091a12;
+  --text-primary: #efefef;
+  --text-secondary: #b8b8b8;
+  --text-muted: #666666;
+  --text-on-accent: #000000;
 
-  --border-default: #2d6147;
-  --border-strong: #8cb8e8;
+  --border-default: #2a2a2a;
+  --border-strong: #efefef;
 
-  --accent-primary: #8cb8e8;
-  --accent-hover: #b8d4f0;
-  --accent-ring: #3d7a5c;
+  --accent-primary: #efefef;
+  --accent-hover: #ffffff;
+  --accent-ring: #444444;
 
-  --shadow-card: 0 2px 24px 0 rgba(0, 0, 0, 0.5);
-  --shadow-glow: 0 0 32px 0 rgba(140, 184, 232, 0.15);
-  --shadow-elevated: 0 8px 40px 0 rgba(0, 0, 0, 0.6);
+  --shadow-card: 0 1px 4px 0 rgba(0,0,0,0.4), 0 4px 16px 0 rgba(0,0,0,0.3);
+  --shadow-glow: 0 0 0 3px rgba(255,255,255,0.06);
+  --shadow-elevated: 0 8px 40px 0 rgba(0,0,0,0.6);
 
-  --ink-fire: #e05555;
-  --ink-air: #8a80e0;
-  --ink-water: #4da6d8;
-  --ink-earth: #b8924a;
+  --ink-fire: #e06060;
+  --ink-air: #8480d8;
+  --ink-water: #4da8d8;
+  --ink-earth: #c8924a;
 
-  --tint-fire: #2a1212;
-  --tint-air: #1a182e;
-  --tint-water: #0e1f2e;
-  --tint-earth: #201a0e;
+  --tint-fire: #1e1010;
+  --tint-air: #141420;
+  --tint-water: #0c1820;
+  --tint-earth: #1a1408;
 }
 
-/* ── SEPIA THEME — parchment and botanical ink ─────────────── */
+/* ── SEPIA — cool parchment, minimal warmth ─────────────────── */
 [data-theme='sepia'] {
-  --bg-page: #f5f0e8;
-  --bg-surface: #faf7f1;
-  --bg-subtle: #ede6d6;
-  --bg-nav: rgba(245, 240, 232, 0.9);
+  --bg-page: #f2efe9;
+  --bg-surface: #f8f6f2;
+  --bg-subtle: #e8e4dc;
+  --bg-nav: rgba(242, 239, 233, 0.92);
 
-  --text-primary: #2c2010;
-  --text-secondary: #5a4a2a;
-  --text-muted: #8a7455;
-  --text-on-accent: #faf7f1;
+  --text-primary: #1a1814;
+  --text-secondary: #3d3830;
+  --text-muted: #847c70;
+  --text-on-accent: #f8f6f2;
 
-  --border-default: #c8b89a;
-  --border-strong: #2c2010;
+  --border-default: #d4cec4;
+  --border-strong: #1a1814;
 
-  --accent-primary: #1a3a2a;
-  --accent-hover: #0e2419;
-  --accent-ring: #c8b89a;
+  --accent-primary: #1a1814;
+  --accent-hover: #3d3830;
+  --accent-ring: #c8c0b0;
 
-  --shadow-card: 0 2px 16px 0 rgba(44, 32, 16, 0.08);
-  --shadow-glow: 0 0 20px 0 rgba(200, 184, 154, 0.4);
-  --shadow-elevated: 0 8px 32px 0 rgba(44, 32, 16, 0.14);
+  --shadow-card: 0 1px 4px 0 rgba(26,24,20,0.06), 0 4px 16px 0 rgba(26,24,20,0.04);
+  --shadow-glow: 0 0 0 3px rgba(26,24,20,0.08);
+  --shadow-elevated: 0 8px 32px 0 rgba(26,24,20,0.1);
 
-  --tint-fire: #f9ede9;
-  --tint-air: #f2eff9;
-  --tint-water: #edf2f9;
-  --tint-earth: #f5eedf;
+  --tint-fire: #f8efee;
+  --tint-air: #eeeff8;
+  --tint-water: #eef2f8;
+  --tint-earth: #f4f0e8;
 }
 
 /* ── BASE RESETS ────────────────────────────────────────────── */
@@ -151,41 +153,41 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 body {
   background-color: var(--bg-page);
   color: var(--text-primary);
   font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.6;
   transition: background-color var(--duration-base) var(--ease-out),
               color var(--duration-base) var(--ease-out);
   min-height: 100dvh;
 }
 
-/* Arabic text direction */
-[dir='rtl'] {
-  font-family: var(--font-arabic);
+/* Persian text */
+[lang='fa'], .font-persian {
+  font-family: var(--font-persian);
 }
 
-/* Selection */
 ::selection {
-  background: var(--accent-ring);
-  color: var(--text-primary);
+  background: var(--border-strong);
+  color: var(--bg-page);
 }
 
-/* Focus visible */
 :focus-visible {
-  outline: 2px solid var(--accent-ring);
+  outline: 2px solid var(--accent-primary);
   outline-offset: 3px;
   border-radius: var(--radius-sm);
 }
 
-/* Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg-subtle);
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
   background: var(--border-default);
@@ -193,32 +195,18 @@ body {
 }
 
 /* ── UTILITY CLASSES ────────────────────────────────────────── */
-.font-display { font-family: var(--font-display); }
-.font-body    { font-family: var(--font-body); }
-.font-arabic  { font-family: var(--font-arabic); }
+.font-display        { font-family: var(--font-display); }
+.font-body           { font-family: var(--font-body); }
+.font-persian        { font-family: var(--font-persian); }
 .font-arabic-display { font-family: var(--font-arabic-display); }
-.font-mono    { font-family: var(--font-mono); }
+.font-mono           { font-family: var(--font-mono); }
 
 .text-hero    { font-size: var(--text-hero); }
 .text-display { font-size: var(--text-display); }
 .text-glyph   { font-size: var(--text-glyph); }
 
-/* Gradient helpers */
-.sky-gradient {
-  background: linear-gradient(
-    180deg,
-    var(--bg-subtle) 0%,
-    var(--bg-page) 40%,
-    var(--bg-surface) 100%
-  );
-}
-
-.hero-gradient {
-  background: radial-gradient(
-    ellipse 80% 50% at 50% -10%,
-    var(--accent-ring) 0%,
-    transparent 70%
-  );
-  opacity: 0.25;
-  pointer-events: none;
-}
+/* Letter card element left bar */
+.element-bar-fire  { border-left: 3px solid var(--ink-fire); }
+.element-bar-air   { border-left: 3px solid var(--ink-air); }
+.element-bar-water { border-left: 3px solid var(--ink-water); }
+.element-bar-earth { border-left: 3px solid var(--ink-earth); }

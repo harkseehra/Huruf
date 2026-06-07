@@ -2,10 +2,10 @@ import type { Metadata } from 'next';
 import './globals.css';
 import {
   instrumentSerif,
-  playfairDisplay,
+  ibmPlexSans,
+  ibmPlexMono,
   vazirmatn,
   notoKufiArabic,
-  jetbrainsMono,
 } from './fonts';
 import { ThemeProvider } from '@/providers/ThemeProvider';
 import { NumeralProvider } from '@/providers/NumeralProvider';
@@ -25,27 +25,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       data-theme="paper"
       className={[
         instrumentSerif.variable,
-        playfairDisplay.variable,
+        ibmPlexSans.variable,
+        ibmPlexMono.variable,
         vazirmatn.variable,
         notoKufiArabic.variable,
-        jetbrainsMono.variable,
       ].join(' ')}
       suppressHydrationWarning
     >
       <head>
-        {/* Prevent theme flash before JS hydrates */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `
-(function(){
-  try{
-    var t=localStorage.getItem('huruf-theme');
-    if(t&&['paper','night','sepia'].includes(t)){
-      document.documentElement.setAttribute('data-theme',t);
-    }
-  }catch(e){}
-})();
-`,
+            __html: `(function(){try{var t=localStorage.getItem('huruf-theme');if(t&&['paper','night','sepia'].includes(t)){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();`,
           }}
         />
       </head>

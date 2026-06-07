@@ -12,7 +12,6 @@ interface HeroInputProps {
 export function HeroInput({ value, onChange }: HeroInputProps) {
   const ref = useRef<HTMLTextAreaElement>(null);
 
-  // Auto-resize
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
@@ -22,39 +21,38 @@ export function HeroInput({ value, onChange }: HeroInputProps) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.97 }}
+      initial={{ opacity: 0, scale: 0.98 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={SPRING}
       className="relative w-full"
     >
-      {/* Glow ring on focus */}
-      <div className="absolute inset-0 rounded-xl pointer-events-none transition-opacity duration-300 opacity-0 peer-focus:opacity-100 shadow-glow" />
       <textarea
         ref={ref}
         value={value}
         onChange={(e) => onChange(e.target.value)}
         dir="rtl"
-        lang="ar"
+        lang="fa"
         rows={2}
-        placeholder="اكتب اسمك أو كلمة هنا..."
+        placeholder="نام یا کلمه‌ای بنویسید..."
         className={[
-          'peer w-full resize-none overflow-hidden',
-          'rounded-xl bg-[var(--bg-surface)] border border-[var(--border-default)]',
-          'px-6 py-5 text-center leading-relaxed',
-          'font-arabic-display text-4xl sm:text-5xl',
-          'text-[var(--text-primary)] placeholder:text-[var(--text-muted)]',
-          'transition-all duration-300 ease-smooth',
-          'focus:outline-none focus:border-[var(--border-strong)] focus:shadow-glow',
-          'shadow-card',
+          'w-full resize-none overflow-hidden',
+          'rounded-lg bg-[var(--bg-surface)] border border-[var(--border-default)]',
+          'px-6 py-5 text-center',
+          'font-arabic-display font-bold',
+          'text-[var(--text-primary)] placeholder:text-[var(--text-muted)] placeholder:font-normal',
+          'transition-all duration-300',
+          'focus:outline-none focus:border-[var(--border-strong)] focus:shadow-[var(--shadow-glow)]',
+          'shadow-[var(--shadow-card)]',
+          'leading-relaxed',
         ].join(' ')}
+        style={{ fontSize: 'clamp(2rem, 5vw, 3rem)' }}
         spellCheck={false}
         autoComplete="off"
       />
-      {value.length === 0 && (
-        <p className="mt-2 text-center text-xs font-body italic text-[var(--text-muted)]">
-          Accepts Arabic, Persian, or Urdu script
-        </p>
-      )}
+      <div className="mt-2 flex items-center justify-center gap-3">
+        <span className="text-xs font-body text-[var(--text-muted)]">Persian · Arabic · Urdu</span>
+        <span className="font-persian text-xs text-[var(--text-muted)]" lang="fa">فارسی · عربی · اردو</span>
+      </div>
     </motion.div>
   );
 }
