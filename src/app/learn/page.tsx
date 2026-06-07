@@ -6,34 +6,38 @@ import { CelestialBg, ConstellationStrip } from '@/components/ui/CelestialBg';
 import { PLANETS } from '@/data/planets';
 import type { Element } from '@/types';
 
-const elements: Array<{ id: Element; titleEn: string; titleFa: string; description: string }> = [
+const elements: Array<{ id: Element; titleEn: string; titleFa: string; letters: string; description: string }> = [
   {
     id: 'fire',
     titleEn: 'Fire — Nāriyya',
     titleFa: 'آتش — ناریه',
+    letters: 'ا ه ط م ف ش ذ',
     description:
-      'Letters of fire carry the qualities of light, warmth, rising energy, and spiritual illumination. They are associated with the will, the sun, and the principle of origin.',
+      'Letters of fire carry the qualities of light, warmth, rising energy, and spiritual illumination. They are associated with the will, the sun, and the principle of origin. The fire letters include Alif (unity), Hāʾ (divine breath), Mīm (the Muhammadan reality), and Dhāl (remembrance itself).',
   },
   {
     id: 'air',
     titleEn: 'Air — Hawāʾiyya',
     titleFa: 'هوا — هوایی',
+    letters: 'ب و ي ن ص ت ظ',
     description:
-      'Air letters hold breath, movement, the spoken word, and the transmission of spirit between forms. They govern the intellect, communication, and the mediating principle.',
+      'Air letters hold breath, movement, the spoken word, and the transmission of spirit between forms. They govern the intellect, communication, and the mediating principle. Bāʾ (manifestation), Wāw (union), Nūn (the inkwell of creation) are among the air letters.',
   },
   {
     id: 'water',
     titleEn: 'Water — Māʾiyya',
     titleFa: 'آب — مایی',
+    letters: 'ج ز ك س ق ث غ',
     description:
-      "Water letters carry receptivity, depth, the lunar, and the soul's inner tides. They are letters of feeling, reflection, and the hidden current beneath appearances.",
+      "Water letters carry receptivity, depth, the lunar, and the soul's inner tides. They are letters of feeling, reflection, and the hidden current beneath appearances. Qāf (the cosmic mountain), Ghayn (the veiled eye), and Kāf (divine sufficiency) are water letters.",
   },
   {
     id: 'earth',
     titleEn: 'Earth — Turābiyya',
     titleFa: 'خاک — ترابی',
+    letters: 'د ح ل ع ر خ ض',
     description:
-      'Earth letters are the letters of manifestation, weight, stability, and the body. They anchor the spiritual into the physical and give form to what would otherwise remain invisible.',
+      'Earth letters are the letters of manifestation, weight, stability, and the body. They anchor the spiritual into the physical and give form to what would otherwise remain invisible. ʿAyn (the divine eye of witnessing), Rāʾ (flowing mercy), and Lām (subtle kindness) are earth letters.',
   },
 ];
 
@@ -66,6 +70,71 @@ export default function LearnPage() {
           </p>
           <ConstellationStrip className="mx-auto mt-6 text-[var(--text-muted)]" />
         </header>
+
+        {/* Cosmological framework */}
+        <ExplainerSection titleEn="The Cosmic Framework" titleFa="چارچوب کیهانی" tinted>
+          <div className="space-y-6 font-body text-base leading-relaxed text-[var(--text-secondary)] max-w-2xl">
+            <p>
+              The Arabic alphabet has 28 letters — corresponding to the 28 stations of the moon.
+              Ibn Arabi saw this as cosmologically significant: the moon governs manifestation, the
+              visible world, the unfolding of divine speech into creation. Each letter is a station
+              of the moon, and the moon is the mirror through which divine light becomes visible form.
+            </p>
+
+            {/* The four groups of seven */}
+            <div className="rounded-lg border border-[var(--border-default)] overflow-hidden">
+              <div className="bg-[var(--bg-page)] px-4 py-3 border-b border-[var(--border-default)]">
+                <p className="font-body text-xs font-semibold uppercase tracking-widest text-[var(--text-muted)]">
+                  Four groups of seven — per Ibn Arabi&apos;s <em>Futūhāt al-Makkiyya</em>
+                </p>
+              </div>
+              <div className="grid grid-cols-2 sm:grid-cols-4 divide-x divide-[var(--border-default)]">
+                {([
+                  { el: 'fire'  as const, fa: 'آتش',  letters: 'ا ه ط م ف ش ذ' },
+                  { el: 'air'   as const, fa: 'هوا',  letters: 'ب و ي ن ص ت ظ' },
+                  { el: 'water' as const, fa: 'آب',   letters: 'ج ز ك س ق ث غ' },
+                  { el: 'earth' as const, fa: 'خاک',  letters: 'د ح ل ع ر خ ض' },
+                ] as const).map(({ el, fa, letters }) => (
+                  <div key={el} className="px-4 py-4" style={{ borderLeftColor: `var(--ink-${el})` }}>
+                    <div className="flex items-center gap-1.5 mb-2">
+                      <span className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: `var(--ink-${el})` }} />
+                      <span className="font-persian text-xs text-[var(--text-muted)]" lang="fa">{fa}</span>
+                    </div>
+                    <p className="font-arabic-display font-bold text-xl text-[var(--text-primary)] leading-relaxed" dir="rtl">
+                      {letters}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Ibn Arabi on Bāʾ */}
+            <blockquote className="border-l-2 border-[var(--border-strong)] pl-5 py-1">
+              <p className="font-body text-base text-[var(--text-secondary)] leading-relaxed">
+                &ldquo;All of the Quran is in the Fatiha, all the Fatiha is in the Bismillah,
+                all the Bismillah is in the Bāʾ, and all the Bāʾ is in the dot beneath it.&rdquo;
+              </p>
+              <footer className="mt-2 font-body text-xs text-[var(--text-muted)]">
+                — Attributed to Imam Ali ibn Abi Talib
+              </footer>
+            </blockquote>
+
+            <p>
+              The Alif stands alone — it cannot be joined to what follows. It is the letter of pure
+              unity. Yet the Bismillah begins not with Alif but with Bāʾ: the hidden Alif is implied
+              above it, present beyond inscription. This is the hidden and the manifest — bāṭin and
+              ẓāhir — built into the very opening of the book.
+            </p>
+
+            <p className="text-sm text-[var(--text-muted)]">
+              <strong>Note on sources:</strong> The complete detailed correspondence system exists in
+              the <em>Futūhāt al-Makkiyya</em> in Arabic. Planetary associations vary between schools
+              and masters within the tradition. What is shown in this app is a scholarly reconstruction
+              supplemented from broader ʿIlm al-Ḥurūf tradition — Phase 2 will confirm against a
+              named source edition.
+            </p>
+          </div>
+        </ExplainerSection>
 
         {/* Intro */}
         <ExplainerSection titleEn="What is ʿIlm al-Ḥurūf?" titleFa="علم الحروف چیست؟" tinted>
@@ -225,6 +294,9 @@ export default function LearnPage() {
                   </span>
                 </div>
                 <h3 className="mb-2 font-display text-xl text-[var(--text-primary)]">{el.titleEn}</h3>
+                <p className="font-arabic-display font-bold text-lg mb-3 leading-loose" dir="rtl" style={{ color: `var(--ink-${el.id})`, opacity: 0.7 }}>
+                  {el.letters}
+                </p>
                 <p className="font-body text-sm leading-relaxed text-[var(--text-secondary)]">
                   {el.description}
                 </p>

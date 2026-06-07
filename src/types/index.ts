@@ -11,8 +11,11 @@ export interface AbjadLetter {
   group: LetterGroup;
   ordinal: number;
   planet?: string;
-  essence?: string;
-  example?: string;
+  essence?: string;        // brief esoteric phrase (Phase 1 sample)
+  example?: string;        // example word
+  divineNameEn?: string;   // corresponding Name of God (English)
+  divineNameAr?: string;   // corresponding Name of God (Arabic)
+  nature?: string;         // Ibn Arabi / Sufi spiritual description
 }
 
 export interface CalcLetter {
