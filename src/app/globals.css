@@ -1,0 +1,224 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── DESIGN TOKENS ─────────────────────────────────────────── */
+:root {
+  /* Font families */
+  --font-display: 'Instrument Serif', serif;
+  --font-body: 'Playfair Display', serif;
+  --font-arabic: 'Vazirmatn', sans-serif;
+  --font-arabic-display: 'Noto Kufi Arabic', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Type scale */
+  --text-hero: clamp(3.5rem, 8vw, 6.5rem);
+  --text-display: clamp(2rem, 4vw, 3rem);
+  --text-xl: clamp(1.5rem, 2.5vw, 2rem);
+  --text-lg: clamp(1.125rem, 1.8vw, 1.35rem);
+  --text-glyph: clamp(2.5rem, 5vw, 3.5rem);
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+
+  /* Shape */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-pill: 9999px;
+
+  /* Motion */
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 150ms;
+  --duration-base: 420ms;
+  --duration-slow: 680ms;
+
+  /* Element inks — same across all themes (adjusted per theme below) */
+  --ink-fire: #c0392b;
+  --ink-air: #5a50b8;
+  --ink-water: #2471a3;
+  --ink-earth: #6e4c1e;
+}
+
+/* ── PAPER THEME (default) — sky meets forest ──────────────── */
+[data-theme='paper'] {
+  --bg-page: #eef5fb;
+  --bg-surface: #ffffff;
+  --bg-subtle: #daeaf6;
+  --bg-nav: rgba(238, 245, 251, 0.88);
+
+  --text-primary: #112b1e;
+  --text-secondary: #2d6147;
+  --text-muted: #5c9e7a;
+  --text-on-accent: #f0f8f4;
+
+  --border-default: #b8d4ee;
+  --border-strong: #1a3a2a;
+
+  --accent-primary: #1a3a2a;
+  --accent-hover: #0e2419;
+  --accent-ring: #8cb8e8;
+
+  --shadow-card: 0 2px 16px 0 rgba(17, 43, 30, 0.07);
+  --shadow-glow: 0 0 28px 0 rgba(140, 184, 232, 0.38);
+  --shadow-elevated: 0 8px 32px 0 rgba(17, 43, 30, 0.12);
+
+  --tint-fire: #fef1ef;
+  --tint-air: #f2f1fb;
+  --tint-water: #eef5fc;
+  --tint-earth: #faf4ec;
+}
+
+/* ── NIGHT THEME — forest floor under stars ────────────────── */
+[data-theme='night'] {
+  --bg-page: #091a12;
+  --bg-surface: #112b1e;
+  --bg-subtle: #1a3a2a;
+  --bg-nav: rgba(9, 26, 18, 0.88);
+
+  --text-primary: #daeaf8;
+  --text-secondary: #b8d4f0;
+  --text-muted: #7ca8cc;
+  --text-on-accent: #091a12;
+
+  --border-default: #2d6147;
+  --border-strong: #8cb8e8;
+
+  --accent-primary: #8cb8e8;
+  --accent-hover: #b8d4f0;
+  --accent-ring: #3d7a5c;
+
+  --shadow-card: 0 2px 24px 0 rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 32px 0 rgba(140, 184, 232, 0.15);
+  --shadow-elevated: 0 8px 40px 0 rgba(0, 0, 0, 0.6);
+
+  --ink-fire: #e05555;
+  --ink-air: #8a80e0;
+  --ink-water: #4da6d8;
+  --ink-earth: #b8924a;
+
+  --tint-fire: #2a1212;
+  --tint-air: #1a182e;
+  --tint-water: #0e1f2e;
+  --tint-earth: #201a0e;
+}
+
+/* ── SEPIA THEME — parchment and botanical ink ─────────────── */
+[data-theme='sepia'] {
+  --bg-page: #f5f0e8;
+  --bg-surface: #faf7f1;
+  --bg-subtle: #ede6d6;
+  --bg-nav: rgba(245, 240, 232, 0.9);
+
+  --text-primary: #2c2010;
+  --text-secondary: #5a4a2a;
+  --text-muted: #8a7455;
+  --text-on-accent: #faf7f1;
+
+  --border-default: #c8b89a;
+  --border-strong: #2c2010;
+
+  --accent-primary: #1a3a2a;
+  --accent-hover: #0e2419;
+  --accent-ring: #c8b89a;
+
+  --shadow-card: 0 2px 16px 0 rgba(44, 32, 16, 0.08);
+  --shadow-glow: 0 0 20px 0 rgba(200, 184, 154, 0.4);
+  --shadow-elevated: 0 8px 32px 0 rgba(44, 32, 16, 0.14);
+
+  --tint-fire: #f9ede9;
+  --tint-air: #f2eff9;
+  --tint-water: #edf2f9;
+  --tint-earth: #f5eedf;
+}
+
+/* ── BASE RESETS ────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  transition: background-color var(--duration-base) var(--ease-out),
+              color var(--duration-base) var(--ease-out);
+  min-height: 100dvh;
+}
+
+/* Arabic text direction */
+[dir='rtl'] {
+  font-family: var(--font-arabic);
+}
+
+/* Selection */
+::selection {
+  background: var(--accent-ring);
+  color: var(--text-primary);
+}
+
+/* Focus visible */
+:focus-visible {
+  outline: 2px solid var(--accent-ring);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-subtle);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-default);
+  border-radius: var(--radius-pill);
+}
+
+/* ── UTILITY CLASSES ────────────────────────────────────────── */
+.font-display { font-family: var(--font-display); }
+.font-body    { font-family: var(--font-body); }
+.font-arabic  { font-family: var(--font-arabic); }
+.font-arabic-display { font-family: var(--font-arabic-display); }
+.font-mono    { font-family: var(--font-mono); }
+
+.text-hero    { font-size: var(--text-hero); }
+.text-display { font-size: var(--text-display); }
+.text-glyph   { font-size: var(--text-glyph); }
+
+/* Gradient helpers */
+.sky-gradient {
+  background: linear-gradient(
+    180deg,
+    var(--bg-subtle) 0%,
+    var(--bg-page) 40%,
+    var(--bg-surface) 100%
+  );
+}
+
+.hero-gradient {
+  background: radial-gradient(
+    ellipse 80% 50% at 50% -10%,
+    var(--accent-ring) 0%,
+    transparent 70%
+  );
+  opacity: 0.25;
+  pointer-events: none;
+}
